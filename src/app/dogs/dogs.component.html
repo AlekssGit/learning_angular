@@ -1,0 +1,23 @@
+<h2>"My Dogs"</h2>
+<div>
+  <label id="new-dog-name">Dog name: </label>
+  <input for="new-dog-name" #dogName />
+  <label id="new-dog-character">Dog character: </label>
+  <input for="new-dog-character" #dogCharacter />
+
+  <button class="add-button" (click)="add(dogName.value, dogCharacter.value);
+dogName.value=''; dogCharacter.value=''">
+    Add dog
+  </button>
+</div>
+
+<ul class="dogs">
+  <li *ngFor="let dog of dogs">
+      <a routerLink="/detail/{{dog.id}}">
+        <span  class="badge">{{dog.id}}</span>{{dog.name}}
+      </a>
+      <button class="delete" title="delete dog"
+              (click)="delete(dog)">x</button>
+  </li>
+</ul>
+
